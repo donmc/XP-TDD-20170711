@@ -22,7 +22,7 @@ public class Flight {
       throw new IllegalArgumentException("Invalid origin code");
     }
     if (destination == null || destination.length() != 3) {
-      throw new IllegalArgumentException("Invalid destination code");
+      throw new IllegalArgumentException("Invalid destination code"); 
     }
     if (mileage < 100) {
       throw new IllegalArgumentException("Mileage must be greater than 100");
