@@ -3,21 +3,26 @@ package com.tddair;
 public class TddAirApplication {
 
   private FlightDao flights = new FlightDao();
+  private MemberDao members = new MemberDao();
 
-  public TddAirApplication() { 
+  public TddAirApplication() {
   }
 
-  /** 
+  /**
    * Adds a flight to the system.
    * 
-   * @param origin the three letter airline code for origin airport
-   * @param destination the three letter airline code for destination airport
-   * @param mileage the miles between origin and destination
-   * @param airline the two letter airline code
-   * @param number the numbered flight number
+   * @param origin
+   *          the three letter airline code for origin airport
+   * @param destination
+   *          the three letter airline code for destination airport
+   * @param mileage
+   *          the miles between origin and destination
+   * @param airline
+   *          the two letter airline code
+   * @param number
+   *          the numbered flight number
    */
-  public void addFlight(String origin, String destination, 
-                        int mileage, String airline, int number) {
+  public void addFlight(String origin, String destination, int mileage, String airline, int number) {
     flights.addFlight(origin, destination, mileage, airline, number);
   }
 
@@ -26,12 +31,25 @@ public class TddAirApplication {
   }
 
   public void registerMember(String username, String email) {
-    // TODO Auto-generated method stub
-    
+    validateEmail(email);
+    members.register(username, new Member(username, email));
+
+  }
+
+  private void validateEmail(String email) {
+    if (!email.contains("@")) {
+      throw new IllegalArgumentException();
+    }
   }
 
   public Member lookupMember(String username) {
-    // TODO Auto-generated method stub
-    return null;
+    return members.lookup(username);
+  }
+
+  public void completeFlight(String username, String flightNumber) {
+    Member member = members.lookup(username);
+    Flight flight = flights.getFlightBy(flightNumber);
+    member.completeFlight(flight);
+    
   }
 }
