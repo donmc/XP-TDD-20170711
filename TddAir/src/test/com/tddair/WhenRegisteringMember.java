@@ -40,8 +40,8 @@ public class WhenRegisteringMember {
         //validate
         assertNotNull(member);
         assertEquals("RED", member.getStatus());
-        assertEquals("0", String.valueOf(member.getYtdMiles()));
-        assertEquals("0", String.valueOf(member.getBalance()));
+        assertEquals(0,member.getYtdMiles());
+        assertEquals(10000,member.getBalance());
 
     }
 
@@ -64,8 +64,8 @@ public class WhenRegisteringMember {
         //validate
         assertNotNull(member);
         assertEquals("RED", member.getStatus());
-        assertEquals("0", String.valueOf(member.getYtdMiles()));
-        assertEquals("0", String.valueOf(member.getBalance()));
+        assertEquals(0,member.getYtdMiles());
+        assertEquals(10000,member.getBalance());
 
     }
 

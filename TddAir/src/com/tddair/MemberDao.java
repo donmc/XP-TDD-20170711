@@ -34,7 +34,7 @@ public class MemberDao {
                 member.setStatus("RED");
                 member.setRegistered(true);
                 member.setYtdMiles(0);
-                member.setBalance(0);
+                member.setBalance(10000);
                 return true;
             } else {
                 throw new InvalidEmailException("Email Id Invalid");
