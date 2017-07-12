@@ -21,13 +21,14 @@ public class TddAirApplication {
     flights.addFlight(origin, destination, mileage, airline, number);
   }
 
-public void registerMember(String userName, String email) {
-	// TODO Auto-generated method stub
+	public void registerMember(String userName, String email) {
+		// TODO Auto-generated method stub
+		
+	}
 	
-}
-
-public Member lookupMember(String userName) {
-	// TODO Auto-generated method stub
-	return null;
-}
+	public Member lookupMember(String userName) {
+		// TODO Auto-generated method stub
+		Member member = new Member();
+		return member;
+	}
 }
