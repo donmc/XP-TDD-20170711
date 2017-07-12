@@ -25,10 +25,14 @@ public class WhenRegisteringMember {
 	
 	@Test
 	public void shouldRegisterError() {
-		Member member = setup(); 
+		try {
+			Member member = setup1(); 
+			fail("Should throw exception");
+		}catch(Exception e) {
+			//validate
+
+		}
 	    
-	    //validate
-        assertEquals("User Already Exists", member.getStatus());
 	}
 
 	public Member setup() {
@@ -37,12 +41,24 @@ public class WhenRegisteringMember {
 		
 		String userName = "john";
 	    String email = "john@aa.com";
-	    app.registerMember(userName,email);
+	    app.registerMember(userName,email,null);
 	    
 	    //execute
 	    Member member = app.lookupMember(userName);
 		return member;
 	}
 	
-
+	public Member setup1() {
+		//set up
+		TddAirApplication app = new TddAirApplication();
+		
+		String userName = "john";
+	    String email = "john@aa.com";
+	    String oldUserName = "john";
+	    app.registerMember(userName,email,oldUserName);
+	    
+	    //execute
+	    Member member = app.lookupMember(userName);
+		return member;
+	}
 }

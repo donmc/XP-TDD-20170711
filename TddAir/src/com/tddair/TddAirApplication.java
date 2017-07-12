@@ -21,15 +21,17 @@ public class TddAirApplication {
     flights.addFlight(origin, destination, mileage, airline, number);
   }
 
-	public void registerMember(String userName, String email) {
-		// TODO Auto-generated method stub
+  public void registerMember(String userName, String email,String oldUserName) {
+	if (oldUserName != null && userName.equals(oldUserName)) {
+		throw new RuntimeException("User already exists");
+	}
 		
-	}
+  }
 	
-	public Member lookupMember(String userName) {
-		// TODO Auto-generated method stub
-		Member member = new Member();
-		member.setStatus("RED");
-		return member;
-	}
+  public Member lookupMember(String userName) {
+	// TODO Auto-generated method stub
+	Member member = new Member();
+	member.setStatus("RED");
+	return member;
+  }
 }
