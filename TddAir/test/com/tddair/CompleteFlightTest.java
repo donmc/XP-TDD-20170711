@@ -14,7 +14,7 @@ public class CompleteFlightTest {
 		String userName="donmc";
 		String emailId = "donmc@hotmail.com";
 		member = new Member(userName,emailId);
-		Flight flight = new Flight("DFW", "ORD", 5000, "AA", 10);
+		Flight flight = new Flight("DFW", "ORD", 924, "AA", 10);
 		member.addFlight(flight);
 	}
 

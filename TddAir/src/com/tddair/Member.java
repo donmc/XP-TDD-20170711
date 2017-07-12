@@ -16,6 +16,8 @@ public class Member {
 		this.userName = userName;
 		this.emailId = emailId;
 		flightList = new ArrayList<>();
+		this.miles = 10000;
+		this.balance =0;
 	}
 	
 	
@@ -66,8 +68,7 @@ public class Member {
 	}
 
 	public void addFlight(Flight flight) {
-		// TODO Auto-generated method stub
-		
+		this.miles += flight.getMileage();
 	}
 
 

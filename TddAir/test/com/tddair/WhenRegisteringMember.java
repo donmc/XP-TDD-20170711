@@ -9,7 +9,6 @@ public class WhenRegisteringMember {
 	@Test
 	public void shouldRegisterSuccessfullyTestNotNull() {
 		Member member = setup(); 
-	    
 	    //validate
         assertNotNull(member);
 
@@ -18,7 +17,6 @@ public class WhenRegisteringMember {
 	@Test
 	public void shouldRegisterSuccessfullyStatusCheck() {
 		Member member = setup(); 
-	    
 	    //validate
         assertEquals("RED", member.getStatus());
 	}
@@ -26,7 +24,6 @@ public class WhenRegisteringMember {
 	@Test
 	public void shouldRegisterSuccessfullyMilesCheck() {
 		Member member = setup(); 
-	    
 	    //validate
         assertEquals(0, member.getMiles());
 	}
@@ -34,7 +31,6 @@ public class WhenRegisteringMember {
 	@Test
 	public void shouldRegisterSuccessfullyBalanceCheck() {
 		Member member = setup(); 
-	    //System.out.println(");
 	    //validate
         assertEquals(10000, member.getBalance());
 	}
