@@ -28,8 +28,37 @@ public class TddAirApplication {
 	public void registerMember(String username, String email) {
 		// TODO Auto-generated method stub
 		Member member = new Member();
-		members.put(username,member);
 		
+		populateMember(username, email, member);
+		
+		if(!members.containsKey(username)) {
+			members.put(username,member);
+		} else {
+			throw new RuntimeException("Duplicate User Name:"+username);
+		}
+		
+		
+	}
+
+	private void populateMember(String username, String email, Member member) {
+		if(validateEmailId(email)) {
+			member.setEmail(email);
+		}
+		member.setUsername(username);
+		
+		member.setRegistered(true);
+		member.setStatus("Red");
+		member.setYtdMiles(10000);
+		member.setBalance(10000);
+	}
+
+	private boolean validateEmailId(String email) {
+		
+		if(email!=null && email.contains("@")) {
+			return true;
+		} else {
+			throw new  RuntimeException("Invalid Email Id:"+email);
+		}
 	}
 
 	public Member lookupMember(String username) {
