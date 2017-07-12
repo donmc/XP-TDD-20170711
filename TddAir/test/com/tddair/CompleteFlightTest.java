@@ -23,8 +23,17 @@ public class CompleteFlightTest {
 	}
 
 	@Test
-	public void shouldAccumulateMiles() {
-      assertEquals(10924,member.getMiles());
+	public void shouldAccumulateMiles924() {
+      assertEquals(924,member.getMiles());
 	}
 
+	@Test
+	public void shouldPromoteToRed() {
+		assertEquals("RED",member.getStatus());
+	}
+	
+	@Test
+	public void shouldHaveBalance10924() {
+		assertEquals(10924,member.getBalance());
+	}
 }

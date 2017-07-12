@@ -18,6 +18,7 @@ public class Member {
 		flightList = new ArrayList<>();
 		this.miles = 10000;
 		this.balance =0;
+		this.status="RED";
 	}
 	
 	
