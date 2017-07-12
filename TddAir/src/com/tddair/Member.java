@@ -8,6 +8,11 @@ public class Member {
 	private int ytdMiles;
 	private int balance;
 	
+	public Member(String userName2, String email2) {
+		userName = userName2;
+		email = email2;
+		// TODO Auto-generated constructor stub
+	}
 	public String getUserName() {
 		return userName;
 	}

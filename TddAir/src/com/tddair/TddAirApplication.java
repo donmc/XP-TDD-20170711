@@ -3,6 +3,7 @@ package com.tddair;
 public class TddAirApplication {
 
 	private FlightDao flights = new FlightDao();
+	private MemberDao members = new MemberDao();
 
 	public TddAirApplication() {
 	}
@@ -25,11 +26,13 @@ public class TddAirApplication {
 		flights.addFlight(origin, destination, mileage, airline, number);
 	}
 
-	public void registerMember(String userName, String email) {
+	public void registerMember(String userName, String email) throws Exception {
+		members.registerMember(userName, email);
+		
 	}
 
 	public Member lookupMember(String userName) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return members.lookupMember(userName);
 	}
 }

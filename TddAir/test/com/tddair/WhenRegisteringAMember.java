@@ -11,8 +11,8 @@ public class WhenRegisteringAMember {
 	TddAirApplication app = new TddAirApplication();
 	Member member;
 	
-	@BeforeClass
-	public void setup() {
+	@Before
+	public void setup() throws Exception {
 		String userName = "bob";
 		app.registerMember(userName, "bob@example.com");
 		member = app.lookupMember(userName);
@@ -27,7 +27,7 @@ public class WhenRegisteringAMember {
 	public void newMemberShouldBeInRedStatus() {
 		assertEquals("Red", member.getStatus());
 	}
-	
+
 	@Test
 	public void newMemberShouldHaveZeroYTDMiles() {
 		assertEquals(0, member.getYtdMiles());
@@ -35,13 +35,14 @@ public class WhenRegisteringAMember {
 	
 	@Test
 	public void newMemberShouldHave10KBalance() {
-		assertEqual(10000, member.getBalance());
+		assertEquals(10000, member.getBalance());
 	}
 	
 	@Test
 	public void registrationWithSameUsernameThrowsException() {
 		try {
-			app.registerMember("Bob", "bob@example.com");
+			app.registerMember("bob", "bob@example.com");
+			fail();
 		} catch(Exception ex) {
 			assertEquals("Duplicate user name", ex.getMessage());
 		}
@@ -51,6 +52,7 @@ public class WhenRegisteringAMember {
 	public void registrationWithInvalidEmailThrowsException() {
 		try {
 			app.registerMember("Bob", "bob_example.com");
+			fail();
 		} catch(Exception ex) {
 			assertEquals("Invalid email", ex.getMessage());
 		}
