@@ -16,8 +16,8 @@ public class Member {
 		this.userName = userName;
 		this.emailId = emailId;
 		flightList = new ArrayList<>();
-		this.miles = 10000;
-		this.balance =0;
+		this.miles = 0;
+		this.balance =10000;
 		this.status="RED";
 	}
 	
@@ -70,6 +70,7 @@ public class Member {
 
 	public void addFlight(Flight flight) {
 		this.miles += flight.getMileage();
+		this.balance += flight.getMileage();
 	}
 
 
