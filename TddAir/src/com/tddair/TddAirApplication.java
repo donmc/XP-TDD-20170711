@@ -31,6 +31,8 @@ public class TddAirApplication {
   public Member lookupMember(String userName) {
 	// TODO Auto-generated method stub
 	Member member = new Member();
+	member.setMiles(0);
+	member.setBalance(10000);
 	member.setStatus("RED");
 	return member;
   }

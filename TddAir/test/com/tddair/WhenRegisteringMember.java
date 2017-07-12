@@ -34,7 +34,7 @@ public class WhenRegisteringMember {
 	@Test
 	public void shouldRegisterSuccessfullyBalanceCheck() {
 		Member member = setup(); 
-	    
+	    //System.out.println(");
 	    //validate
         assertEquals(10000, member.getBalance());
 	}

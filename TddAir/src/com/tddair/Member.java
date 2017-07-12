@@ -2,7 +2,9 @@ package com.tddair;
 
 public class Member {
 	private String status;
-
+	private int miles;
+	private int balance;
+	
 	public String getStatus() {
 		return status;
 	}
@@ -11,14 +13,22 @@ public class Member {
 		this.status = status;
 	}
 
-	public Object getMiles() {
-		// TODO Auto-generated method stub
-		return null;
+	public int getMiles() {
+		return miles;
 	}
 
-	public Object getBalance() {
-		// TODO Auto-generated method stub
-		return null;
+	public void setMiles(int miles) {
+		this.miles = miles;
 	}
+
+	public int getBalance() {
+		return balance;
+	}
+
+	public void setBalance(int balance) {
+		this.balance = balance;
+	}
+
+
 
 }
