@@ -18,6 +18,11 @@ public class Member {
 		flightList = new ArrayList<>();
 	}
 	
+	
+	public Member() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public String getUserName() {
 		return userName;
 	}
