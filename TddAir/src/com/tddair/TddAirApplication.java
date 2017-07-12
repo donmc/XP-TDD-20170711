@@ -35,4 +35,11 @@ public class TddAirApplication {
 
     return members.lookupMember(userName);
   }
+
+  public void membersTakesFlight(String userName, String flightNumber) {
+    // get ytd miles for a user
+
+    int calculatedMiles = flights.calculateMiles(flightNumber);
+    members.completedFlight(userName, calculatedMiles);
+  }
 }

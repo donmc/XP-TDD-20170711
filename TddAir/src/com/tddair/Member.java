@@ -22,6 +22,10 @@ public class Member {
     this.status = status;
   }
 
+  public MembershipStatus getStatus() {
+    return status;
+  }
+
   public int getYtdMiles() {
     return ytdMiles;
   }
@@ -36,5 +40,37 @@ public class Member {
 
   public void setBalance(int balance) {
     this.balance = balance;
+  }
+
+  public String getUserName() {
+    // TODO Auto-generated method stub
+    return userName;
+  }
+  
+  public void completeFlight(int mileage) {
+
+    // update YTD miles
+    setYtdMiles(getYtdMiles() + mileage);
+    
+    // update Balance
+    setBalance(getBalance() + mileage);
+    
+    updateMembershipStatus();
+  }
+
+  private void updateMembershipStatus() {
+    // TODO Auto-generated method stub
+    int currentYtdMiles = getYtdMiles();
+    
+    MembershipStatus status = getStatus();
+    if (currentYtdMiles >= 25000 && currentYtdMiles < 50000) {
+      status = MembershipStatus.GREEN;
+    } else if (currentYtdMiles >= 50000 && currentYtdMiles < 75000) {
+      status = MembershipStatus.BLUE;
+    } else if (currentYtdMiles >= 75000) {
+      status = MembershipStatus.GOLD;
+    }
+  
+    setStatus(status);
   }
 }

@@ -27,4 +27,18 @@ public class MemberDao {
     return members.get(userName);
   }
 
+  private void updateMember(Member member) {
+    members.put(member.getUserName(), member);
+
+  }
+
+  public void completedFlight(String userName, int mileage) {
+    
+    Member member = lookupMember(userName);   
+    member.completeFlight(mileage);
+
+    updateMember(member);
+
+  }
+
 }
