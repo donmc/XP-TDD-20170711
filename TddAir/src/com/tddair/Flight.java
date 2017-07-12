@@ -18,7 +18,7 @@ public class Flight {
    * @param number the numbered flight number
    */
   public Flight(String origin, String destination, int mileage, String airline, int number) {
-    if (origin == null || origin.length() != 3) {
+    if (origin == null || origin.length() != 3 ) {
       throw new IllegalArgumentException("Invalid origin code");
     }
     if (destination == null || destination.length() != 3) {
