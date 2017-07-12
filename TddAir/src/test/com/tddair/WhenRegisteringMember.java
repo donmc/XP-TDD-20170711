@@ -2,8 +2,12 @@ package test.com.tddair;
 
 import com.tddair.Member;
 import com.tddair.TddAirApplication;
+
+import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 
 
@@ -11,18 +15,26 @@ import static org.junit.Assert.*;
  * Created by agrawm2 on 7/12/2017.
  */
 public class WhenRegisteringMember {
+	
+	 Member member ;
+	 
 
     @Test
-    public void shouldRegisterSuccessfully(){
-        //setup
-        String username = "manikume24";
+    public void shouldLookupMemberSuccessfully(){    
+    	 //setup
+    	String username = "manikume24";
         String email = "manish.jaipatna@gmail.com";
         TddAirApplication app = new TddAirApplication();
-        app.regisetrMember(username,email);
+        app.registerMember(username,email);
         //execute
-        Member member = app.lookupMember(username);
+        member = app.lookupMember(username);
         //validate
-        assertNotNull(member);
-
+        assertNotNull(member);      
+        assertEquals("RED",member.getStatus() );  
+        assertEquals("0",String.valueOf(member.getYtdMiles())); 
+        assertEquals("0",String.valueOf(member.getBalance())); 
+        
     }
+    
+   
 }
