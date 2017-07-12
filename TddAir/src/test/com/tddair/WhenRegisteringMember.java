@@ -1,12 +1,12 @@
 package test.com.tddair;
 
 import com.tddair.DuplicateMemberException;
-
 import com.tddair.InvalidEmailException;
 import com.tddair.Member;
+import com.tddair.StatusEnum;
 import com.tddair.TddAirApplication;
 
-import org.junit.Before;
+
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -39,7 +39,7 @@ public class WhenRegisteringMember {
         member = app.lookupMember(username);
         //validate
         assertNotNull(member);
-        assertEquals("RED", member.getStatus());
+        assertEquals(StatusEnum.Red, member.getStatus());
         assertEquals(0,member.getYtdMiles());
         assertEquals(10000,member.getBalance());
 
@@ -63,7 +63,7 @@ public class WhenRegisteringMember {
         member = app.lookupMember(username);
         //validate
         assertNotNull(member);
-        assertEquals("RED", member.getStatus());
+        assertEquals(StatusEnum.Red, member.getStatus());
         assertEquals(0,member.getYtdMiles());
         assertEquals(10000,member.getBalance());
 

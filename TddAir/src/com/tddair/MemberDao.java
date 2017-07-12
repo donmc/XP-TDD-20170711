@@ -31,7 +31,7 @@ public class MemberDao {
             if (validEmail(email)) {
                 Member member = new Member(username, email);
                 members.put(member.getUsername(), member);
-                member.setStatus("RED");
+                member.setStatus(StatusEnum.Red);
                 member.setRegistered(true);
                 member.setYtdMiles(0);
                 member.setBalance(10000);

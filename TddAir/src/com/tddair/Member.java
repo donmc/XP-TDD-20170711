@@ -8,7 +8,7 @@ public class Member {
 	private String username;
 	private String email;
 	private boolean registered;
-	private String status;
+	private StatusEnum status;
 	private int ytdMiles;
 	private int balance;
 	
@@ -37,10 +37,10 @@ public class Member {
 	public void setRegistered(boolean registered) {
 		this.registered = registered;
 	}
-	public String getStatus() {
+	public StatusEnum getStatus() {
 		return status;
 	}
-	public void setStatus(String status) {
+	public void setStatus(StatusEnum status) {
 		this.status = status;
 	}
 	public int getYtdMiles() {
