@@ -8,23 +8,30 @@ public class WhenRegisteringMember {
 
 	@Test
 	public void shouldRegisterSuccessfullyTestNotNull() {
-		//set up
-		TddAirApplication app = new TddAirApplication();
-		
-		String userName = "john";
-	    String email = "john@aa.com";
-	    app.registerMember(userName,email);
-	    
-	    //execute
-	    Member member = app.lookupMember(userName); 
+		Member member = setup(); 
 	    
 	    //validate
         assertNotNull(member);
-		//fail("Not yet implemented");
+
 	}
 	
 	@Test
 	public void shouldRegisterSuccessfullyStatusCheck() {
+		Member member = setup(); 
+	    
+	    //validate
+        assertEquals("RED", member.getStatus());
+	}
+	
+	@Test
+	public void shouldRegisterError() {
+		Member member = setup(); 
+	    
+	    //validate
+        assertEquals("User Already Exists", member.getStatus());
+	}
+
+	public Member setup() {
 		//set up
 		TddAirApplication app = new TddAirApplication();
 		
@@ -33,13 +40,9 @@ public class WhenRegisteringMember {
 	    app.registerMember(userName,email);
 	    
 	    //execute
-	    Member member = app.lookupMember(userName); 
-	    
-	    //validate
-        assertEquals("RED", member.getStatus());
-		//fail("Not yet implemented");
+	    Member member = app.lookupMember(userName);
+		return member;
 	}
-	
 	
 
 }
