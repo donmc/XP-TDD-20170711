@@ -75,4 +75,9 @@ public class WhenRegisteringMembers {
 		// validate
 		assertEquals("10000", member.getBalance());
 	}
+	
+	@Test
+	public void shouldRegisterMultipleMembers() {
+		app.regist
+	}
 }
