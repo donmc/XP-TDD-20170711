@@ -22,7 +22,23 @@ public class WhenRegisteringMember {
 	    //validate
         assertEquals("RED", member.getStatus());
 	}
-	
+
+	@Test
+	public void shouldRegisterSuccessfullyMilesCheck() {
+		Member member = setup(); 
+	    
+	    //validate
+        assertEquals(0, member.getMiles());
+	}
+
+	@Test
+	public void shouldRegisterSuccessfullyBalanceCheck() {
+		Member member = setup(); 
+	    
+	    //validate
+        assertEquals(10000, member.getBalance());
+	}
+
 	@Test
 	public void shouldRegisterError() {
 		try {

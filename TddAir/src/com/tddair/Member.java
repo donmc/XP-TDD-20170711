@@ -11,4 +11,14 @@ public class Member {
 		this.status = status;
 	}
 
+	public Object getMiles() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Object getBalance() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
