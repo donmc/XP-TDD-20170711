@@ -24,11 +24,6 @@ public class FlightTest {
 
 	}
 
-	@Test(expected = IllegalArgumentException.class)
-	public void testFlightCreation_NullOrigin() {
-		new Flight("DFW", "ORD", 980, "AA", 234);
-
-	}
 
 	@Test
 	public void testGetFullFlightNumber() {

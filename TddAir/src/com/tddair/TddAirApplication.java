@@ -2,33 +2,37 @@ package com.tddair;
 
 public class TddAirApplication {
 
-  private FlightDao flights = new FlightDao();
+	private FlightDao flights = new FlightDao();
 
-  public TddAirApplication() {
-  }
+	public TddAirApplication() {
+	}
 
-  /**
-   * Adds a flight to the system.
-   * 
-   * @param origin the three letter airline code for origin airport
-   * @param destination the three letter airline code for destination airport
-   * @param mileage the miles between origin and destination
-   * @param airline the two letter airline code
-   * @param number the numbered flight number
-   */
-  public void addFlight(String origin, String destination, 
-                        int mileage, String airline, int number) {
-    flights.addFlight(origin, destination, mileage, airline, number);
-  }
+	/**
+	 * Adds a flight to the system.
+	 * 
+	 * @param origin
+	 *            the three letter airline code for origin airport
+	 * @param destination
+	 *            the three letter airline code for destination airport
+	 * @param mileage
+	 *            the miles between origin and destination
+	 * @param airline
+	 *            the two letter airline code
+	 * @param number
+	 *            the numbered flight number
+	 */
+	public void addFlight(String origin, String destination, int mileage, String airline, int number) {
+		flights.addFlight(origin, destination, mileage, airline, number);
+	}
 
-public void registerMember(String username, String email) {
-	// TODO Auto-generated method stub
-	
-}
+	public void registerMember(String username, String email) {
+		// TODO Auto-generated method stub
+		Member member = new Member(username, email, 0, "10000");
+	}
 
-public Member lookupMemeber(String username, String email) {
-	// TODO Auto-generated method stub
-	Member member = new Member(username, email);
-	return member;
-}
+	public Member lookupMemeber(String username, String email,  int ytdMiles, String balance) {
+		// TODO Auto-generated method stub
+		Member member = new Member(username, email, ytdMiles, balance);
+		return member;
+	}
 }
