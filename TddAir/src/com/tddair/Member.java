@@ -55,22 +55,8 @@ public class Member {
     // update Balance
     setBalance(getBalance() + mileage);
     
-    updateMembershipStatus();
+    setStatus(MembershipStatus.calculateStatus(getYtdMiles()));
   }
 
-  private void updateMembershipStatus() {
-    // TODO Auto-generated method stub
-    int currentYtdMiles = getYtdMiles();
-    
-    MembershipStatus status = getStatus();
-    if (currentYtdMiles >= 25000 && currentYtdMiles < 50000) {
-      status = MembershipStatus.GREEN;
-    } else if (currentYtdMiles >= 50000 && currentYtdMiles < 75000) {
-      status = MembershipStatus.BLUE;
-    } else if (currentYtdMiles >= 75000) {
-      status = MembershipStatus.GOLD;
-    }
   
-    setStatus(status);
-  }
 }
