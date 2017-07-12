@@ -28,15 +28,15 @@ public class MemberDao {
 
         if (getMember(username) == null) {
 
-            if(validEmail(email)){
-            Member member = new Member(username, email);
-            members.put(member.getUsername(), member);
-            member.setStatus("RED");
-            member.setRegistered(true);
-            member.setYtdMiles(0);
-            member.setBalance(0);
-            return true;
-            }else{
+            if (validEmail(email)) {
+                Member member = new Member(username, email);
+                members.put(member.getUsername(), member);
+                member.setStatus("RED");
+                member.setRegistered(true);
+                member.setYtdMiles(0);
+                member.setBalance(0);
+                return true;
+            } else {
                 throw new InvalidEmailException("Email Id Invalid");
             }
         } else {

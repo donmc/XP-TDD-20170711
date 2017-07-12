@@ -18,18 +18,18 @@ import static org.junit.Assert.fail;
  * Created by agrawm2 on 7/12/2017.
  */
 public class WhenRegisteringMember {
-	
-	 Member member ;
+
+    Member member;
     TddAirApplication app = new TddAirApplication();
 
     @Test
-    public void shouldLookupMemberSuccessfully(){    
-    	 //setup
-    	String username = "manikume24";
+    public void shouldLookupMemberSuccessfully() {
+        //setup
+        String username = "manikume24";
         String email = "manish.jaipatna@gmail.com";
 
         try {
-            app.registerMember(username,email);
+            app.registerMember(username, email);
         } catch (DuplicateMemberException e) {
             e.printStackTrace();
         } catch (InvalidEmailException e) {
@@ -38,22 +38,22 @@ public class WhenRegisteringMember {
         //execute
         member = app.lookupMember(username);
         //validate
-        assertNotNull(member);      
-        assertEquals("RED",member.getStatus() );  
-        assertEquals("0",String.valueOf(member.getYtdMiles())); 
-        assertEquals("0",String.valueOf(member.getBalance())); 
-        
+        assertNotNull(member);
+        assertEquals("RED", member.getStatus());
+        assertEquals("0", String.valueOf(member.getYtdMiles()));
+        assertEquals("0", String.valueOf(member.getBalance()));
+
     }
-    
-    
+
+
     @Test
-    public void shouldRegisterdAndLookupAnotherMemberSuccessfully(){
-    	 //setup
-    	String username = "bob";
+    public void shouldRegisterdAndLookupAnotherMemberSuccessfully() {
+        //setup
+        String username = "bob";
         String email = "bob@aa.com";
         //TddAirApplication app = new TddAirApplication();
         try {
-            app.registerMember(username,email);
+            app.registerMember(username, email);
         } catch (DuplicateMemberException e) {
             e.printStackTrace();
         } catch (InvalidEmailException e) {
@@ -62,46 +62,44 @@ public class WhenRegisteringMember {
         //execute
         member = app.lookupMember(username);
         //validate
-        assertNotNull(member);      
-        assertEquals("RED",member.getStatus() );  
-        assertEquals("0",String.valueOf(member.getYtdMiles())); 
-        assertEquals("0",String.valueOf(member.getBalance())); 
-        
+        assertNotNull(member);
+        assertEquals("RED", member.getStatus());
+        assertEquals("0", String.valueOf(member.getYtdMiles()));
+        assertEquals("0", String.valueOf(member.getBalance()));
+
     }
 
     @Test
-    public void shouldRejectDuplicateMemberRegistration(){
+    public void shouldRejectDuplicateMemberRegistration() {
         String username = "john";
         String email = "john@email.com";
         //TddAirApplication app = new TddAirApplication();
         try {
-            app.registerMember(username,email);
+            app.registerMember(username, email);
             fail("Duplicate Member");
         } catch (DuplicateMemberException e) {
             assertEquals("Duplicate Member", e.getMessage());
-        } catch(InvalidEmailException e){
-            assertEquals("Email Id Invalid",e.getMessage());
+        } catch (InvalidEmailException e) {
+            assertEquals("Email Id Invalid", e.getMessage());
         }
 
     }
 
     @Test
-    public void shouldRejectInvalidEmailId(){
+    public void shouldRejectInvalidEmailId() {
         String username = "neha";
         String email = "neha.com";
         //TddAirApplication app = new TddAirApplication();
         try {
-            app.registerMember(username,email);
+            app.registerMember(username, email);
             //fail("Duplicate Member");
         } catch (DuplicateMemberException e) {
             assertEquals("Duplicate Member", e.getMessage());
-        } catch(InvalidEmailException e){
-            assertEquals("Email Id Invalid",e.getMessage());
+        } catch (InvalidEmailException e) {
+            assertEquals("Email Id Invalid", e.getMessage());
         }
 
     }
-    
-    
-    
-   
+
+
 }
