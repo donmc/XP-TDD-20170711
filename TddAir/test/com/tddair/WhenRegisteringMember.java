@@ -35,7 +35,7 @@ public class WhenRegisteringMember {
 	    //execute
 	    Member member = app.lookupMember(userName); 
 	    
-	    	    //validate
+	    //validate
         assertEquals("RED", member.getStatus());
 		//fail("Not yet implemented");
 	}
