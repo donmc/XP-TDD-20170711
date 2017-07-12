@@ -40,31 +40,19 @@ public class TddAirApplication {
 		Member member = members.getMember(username);
 		Flight flight = flights.getFlightBy(flightNumber);
 		
-		accumulateMiles(member, flight);
-		updateBalanceWithFlightMiles(member, flight);
+		member.accumulateMiles(member.getYtdMiles(), flight.getMileage());
+		member.updateBalanceWithFlightMiles(member.getBalance(), flight.getMileage());
 		
-		updateStatusBasedonYtdMiles(member);
+		member.updateStatusBasedonYtdMiles(member.getYtdMiles());
 		return member;
 		
 	}
 
-	private void updateStatusBasedonYtdMiles(Member member) {
-		if(member.getYtdMiles() > 25000 && member.getYtdMiles() <= 50000){
-			member.setStatus(StatusEnum.Green);
-		}else if(member.getYtdMiles() > 50000 && member.getYtdMiles() <= 75000){
-			member.setStatus(StatusEnum.Blue);
-		}else if(member.getYtdMiles() > 75000 ){
-			member.setStatus(StatusEnum.Gold);
-		}
-	}
+	
 
-	private void updateBalanceWithFlightMiles(Member member, Flight flight) {
-		member.setBalance(flight.getMileage() + member.getBalance());
-	}
+	
 
-	private void accumulateMiles(Member member, Flight flight) {
-		member.setYtdMiles(member.getYtdMiles() + flight.getMileage());
-	}
+	
 
 
 }

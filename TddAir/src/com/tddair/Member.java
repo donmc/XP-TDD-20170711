@@ -56,5 +56,28 @@ public class Member {
 		this.balance = balance;
 	}
 	
+	public void updateBalanceWithFlightMiles(int balance,int mileage) {
+		this.balance = (mileage + balance);
+	}
+
+
+	public void updateStatusBasedonYtdMiles(int ytdMiles) {
+		if(ytdMiles > 25000 && ytdMiles <= 50000){
+			this.setStatus(StatusEnum.Green);
+		}else if(ytdMiles > 50000 && ytdMiles <= 75000){
+			this.setStatus(StatusEnum.Blue);
+		}else if(ytdMiles > 75000 ){
+			this.setStatus(StatusEnum.Gold);
+		}
+	}
+
+
+	public void accumulateMiles( int ytdMiles, int flightMileage) {
+		this.setYtdMiles(ytdMiles + flightMileage);
+		
+	}
+	
+	
+	
 	
 }
