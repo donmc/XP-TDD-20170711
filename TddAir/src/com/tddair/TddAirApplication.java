@@ -22,7 +22,7 @@ public class TddAirApplication {
     flights.addFlight(origin, destination, mileage, airline, number);
   }
 
-  public void registerMember(String username, String email) {
+  public void registerMember(String username, String email) throws DuplicateMemberException,InvalidEmailException {
 	  members.registerMember(username, email);
   }
 

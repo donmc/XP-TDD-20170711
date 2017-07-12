@@ -1,5 +1,8 @@
 package test.com.tddair;
 
+import com.tddair.DuplicateMemberException;
+
+import com.tddair.InvalidEmailException;
 import com.tddair.Member;
 import com.tddair.TddAirApplication;
 
@@ -8,7 +11,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-
+import static org.junit.Assert.fail;
 
 
 /**
@@ -17,15 +20,21 @@ import static org.junit.Assert.assertNotNull;
 public class WhenRegisteringMember {
 	
 	 Member member ;
-	 
+    TddAirApplication app = new TddAirApplication();
 
     @Test
     public void shouldLookupMemberSuccessfully(){    
     	 //setup
     	String username = "manikume24";
         String email = "manish.jaipatna@gmail.com";
-        TddAirApplication app = new TddAirApplication();
-        app.registerMember(username,email);
+
+        try {
+            app.registerMember(username,email);
+        } catch (DuplicateMemberException e) {
+            e.printStackTrace();
+        } catch (InvalidEmailException e) {
+            e.printStackTrace();
+        }
         //execute
         member = app.lookupMember(username);
         //validate
@@ -38,12 +47,18 @@ public class WhenRegisteringMember {
     
     
     @Test
-    public void shouldRegisterdAndLookupAnotherMemberSuccessfully(){    
+    public void shouldRegisterdAndLookupAnotherMemberSuccessfully(){
     	 //setup
     	String username = "bob";
         String email = "bob@aa.com";
-        TddAirApplication app = new TddAirApplication();
-        app.registerMember(username,email);
+        //TddAirApplication app = new TddAirApplication();
+        try {
+            app.registerMember(username,email);
+        } catch (DuplicateMemberException e) {
+            e.printStackTrace();
+        } catch (InvalidEmailException e) {
+            e.printStackTrace();
+        }
         //execute
         member = app.lookupMember(username);
         //validate
@@ -52,6 +67,38 @@ public class WhenRegisteringMember {
         assertEquals("0",String.valueOf(member.getYtdMiles())); 
         assertEquals("0",String.valueOf(member.getBalance())); 
         
+    }
+
+    @Test
+    public void shouldRejectDuplicateMemberRegistration(){
+        String username = "john";
+        String email = "john@email.com";
+        //TddAirApplication app = new TddAirApplication();
+        try {
+            app.registerMember(username,email);
+            fail("Duplicate Member");
+        } catch (DuplicateMemberException e) {
+            assertEquals("Duplicate Member", e.getMessage());
+        } catch(InvalidEmailException e){
+            assertEquals("Email Id Invalid",e.getMessage());
+        }
+
+    }
+
+    @Test
+    public void shouldRejectInvalidEmailId(){
+        String username = "neha";
+        String email = "neha.com";
+        //TddAirApplication app = new TddAirApplication();
+        try {
+            app.registerMember(username,email);
+            //fail("Duplicate Member");
+        } catch (DuplicateMemberException e) {
+            assertEquals("Duplicate Member", e.getMessage());
+        } catch(InvalidEmailException e){
+            assertEquals("Email Id Invalid",e.getMessage());
+        }
+
     }
     
     
