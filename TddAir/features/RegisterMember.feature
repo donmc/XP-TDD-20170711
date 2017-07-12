@@ -7,7 +7,7 @@ Feature: Register Member
     When a customer registers with username "donmc" and email "don@improving.com"
     Then a member exists with username "donmc"
     And that member has "Red" status
-    And that member has 0 ytd miles
+    And that member has 0 ytd miles 
     And that member has 10000 balance miles
     
   Scenario: Existing Username
