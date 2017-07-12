@@ -25,9 +25,19 @@ public class TddAirApplication {
     flights.addFlight(origin, destination, mileage, airline, number);
   }
 
+  
+  public Flight getCompleteFlight(String flightNumber) {
+	  return flights.getFlightBy(flightNumber);
+  }
+  
+  /**
+   * 
+   * @param username
+   * @param email
+   */
 	public void registerMember(String username, String email) {
 		// TODO Auto-generated method stub
-		Member member = new Member();
+		Member member = new Member(username,email);
 		
 		populateMember(username, email, member);
 		
@@ -36,8 +46,6 @@ public class TddAirApplication {
 		} else {
 			throw new RuntimeException("Duplicate User Name:"+username);
 		}
-		
-		
 	}
 
 	private void populateMember(String username, String email, Member member) {
@@ -45,11 +53,7 @@ public class TddAirApplication {
 			member.setEmail(email);
 		}
 		member.setUsername(username);
-		
-		member.setRegistered(true);
-		member.setStatus("Red");
-		member.setYtdMiles(10000);
-		member.setBalance(10000);
+
 	}
 
 	private boolean validateEmailId(String email) {
@@ -64,5 +68,14 @@ public class TddAirApplication {
 	public Member lookupMember(String username) {
 		// TODO Auto-generated method stub
 		return members.get(username);
+	}
+
+
+	public void completingFlight(String userName, String flightNum) {
+		
+		Flight flight = flights.getFlightBy(flightNum);
+		Member member = members.get(userName);
+		
+		member.completeFlight(flight);
 	}
 }

@@ -5,10 +5,18 @@ public class Member {
 	private String email;
 	
 	private boolean registered;
-	private String status;
+	private Status status;
 	private long ytdMiles;
 	private long balance;
 	
+	public Member(String userName, String email) {
+		this.username = userName;
+		this.email = email;
+		this.registered = true;
+		this.status = Status.Red;
+		this.ytdMiles = 0;
+		this.balance = 10000;
+	}
 	public String getUsername() {
 		return username;
 	}
@@ -27,10 +35,10 @@ public class Member {
 	public void setRegistered(boolean registered) {
 		this.registered = registered;
 	}
-	public String getStatus() {
+	public Status getStatus() {
 		return status;
 	}
-	public void setStatus(String status) {
+	public void setStatus(Status status) {
 		this.status = status;
 	}
 	public long getYtdMiles() {
@@ -44,6 +52,14 @@ public class Member {
 	}
 	public void setBalance(long balance) {
 		this.balance = balance;
+	}
+	public void completeFlight(Flight flight) {
+		ytdMiles +=flight.getMileage();
+		balance +=flight.getMileage();
+		
+		status = Status.calculateMiles(ytdMiles);
+			
+		
 	}
 	
 	

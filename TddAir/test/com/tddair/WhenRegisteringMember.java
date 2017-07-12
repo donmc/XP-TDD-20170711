@@ -39,7 +39,7 @@ public class WhenRegisteringMember {
 	
 	@Test
 	public void shouldLookupMemberStatus() {
-		assertEquals("Red", member.getStatus());
+		assertEquals(Status.Red, member.getStatus());
 	}
 	
 	@Test
