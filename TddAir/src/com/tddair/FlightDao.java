@@ -23,3 +23,5 @@ public class FlightDao {
     flights.put(flight.getFullFlightNumber(), flight);
   }
 }
+
+
