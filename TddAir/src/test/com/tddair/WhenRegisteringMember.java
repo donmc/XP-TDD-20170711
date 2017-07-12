@@ -36,5 +36,25 @@ public class WhenRegisteringMember {
         
     }
     
+    
+    @Test
+    public void shouldRegisterdAndLookupAnotherMemberSuccessfully(){    
+    	 //setup
+    	String username = "bob";
+        String email = "bob@aa.com";
+        TddAirApplication app = new TddAirApplication();
+        app.registerMember(username,email);
+        //execute
+        member = app.lookupMember(username);
+        //validate
+        assertNotNull(member);      
+        assertEquals("RED",member.getStatus() );  
+        assertEquals("0",String.valueOf(member.getYtdMiles())); 
+        assertEquals("0",String.valueOf(member.getBalance())); 
+        
+    }
+    
+    
+    
    
 }
