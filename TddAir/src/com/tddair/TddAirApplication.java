@@ -20,4 +20,11 @@ public class TddAirApplication {
                         int mileage, String airline, int number) {
     flights.addFlight(origin, destination, mileage, airline, number);
   }
+
+  public void regisetrMember(String username, String email) {
+  }
+
+  public Member lookupMember(String username) {
+    return null;
+  }
 }
