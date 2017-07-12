@@ -2,45 +2,39 @@ package com.tddair;
 
 public class Member {
 
-	private String userName;
-	private String email;
-	private String status;
-	private int ytdMiles;
-	private int balance;
-	
-	public Member(String userName2, String email2) {
-		userName = userName2;
-		email = email2;
-		// TODO Auto-generated constructor stub
-	}
-	public String getUserName() {
-		return userName;
-	}
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
-	}
-	public int getYtdMiles() {
-		return ytdMiles;
-	}
-	public void setYtdMiles(int ytdMiles) {
-		this.ytdMiles = ytdMiles;
-	}
-	public int getBalance() {
-		return balance;
-	}
-	public void setBalance(int balance) {
-		this.balance = balance;
-	}
+  private String userName;
+  private String email;
+  private MembershipStatus status;
+  private int ytdMiles;
+  private int balance;
+
+  public Member(String userName2, String email2) {
+    userName = userName2;
+    email = email2;
+    // TODO Auto-generated constructor stub
+  }
+
+  public String getStatusLabel() {
+    return status.getStatusLabel();
+  }
+
+  public void setStatus(MembershipStatus status) {
+    this.status = status;
+  }
+
+  public int getYtdMiles() {
+    return ytdMiles;
+  }
+
+  public void setYtdMiles(int ytdMiles) {
+    this.ytdMiles = ytdMiles;
+  }
+
+  public int getBalance() {
+    return balance;
+  }
+
+  public void setBalance(int balance) {
+    this.balance = balance;
+  }
 }

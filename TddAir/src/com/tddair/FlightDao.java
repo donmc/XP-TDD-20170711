@@ -17,8 +17,7 @@ public class FlightDao {
     return flights.get(flightNumber);
   }
 
-  protected void addFlight(String origin, String destination, 
-                           int mileage, String airline, int number) {
+  protected void addFlight(String origin, String destination, int mileage, String airline, int number) {
     Flight flight = new Flight(origin, destination, mileage, airline, number);
     flights.put(flight.getFullFlightNumber(), flight);
   }
