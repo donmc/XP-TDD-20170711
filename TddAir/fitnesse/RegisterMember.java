@@ -1,3 +1,4 @@
+import com.tddair.Member;
 import com.tddair.TddAirApplication;
 
 import fit.ColumnFixture;
@@ -6,23 +7,25 @@ public class RegisterMember extends ColumnFixture {
 
   public String username;
   public String email;
-  
+  private Member member;
+
   TddAirApplication app = new TddAirApplication();
+
   public boolean registered() {
-    //app.registerMember(username, email);
-     //member = app.lookUp(username);
-    //return member!=null;
-    return false;
+    app.registerMember(username, email);
+    member = app.lookupMember(username);
+    return member!=null;
   }
-  
+
   public int ytdMiles() {
-    return -1;//member.getYtdMiles();
+    return member.getYtdMiles();
   }
-  
+
   public int balance() {
-    return 0;
+    return member.getBalanceMiles();
   }
+
   public String status() {
-    return "";
+    return member.getStatus().toString();
   }
 }

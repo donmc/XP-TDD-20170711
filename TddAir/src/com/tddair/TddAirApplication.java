@@ -2,7 +2,7 @@ package com.tddair;
 
 public class TddAirApplication {
 
-  private FlightDao flights = new FlightDao();
+  private FlightDao flights = new FakeFlightDao(); // TODO: use Spring
   private MemberDao members = new MemberDao();
 
   public TddAirApplication() {
@@ -38,6 +38,9 @@ public class TddAirApplication {
 
   private void validateEmail(String email) {
     if (!email.contains("@")) {
+      throw new IllegalArgumentException();
+    }
+    if (!email.contains(".com")) {
       throw new IllegalArgumentException();
     }
   }

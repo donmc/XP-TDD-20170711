@@ -13,10 +13,19 @@ public class WhenRegisteringInvalidMembers {
     app.registerMember("donmc", "don@improcing.com");
   }
   
+  
+  
   @Test(expected=IllegalArgumentException.class)
   public void shouldErrorWithInvalidEmail () {
     TddAirApplication app = new TddAirApplication();
     app.registerMember("donmc", "donimprocing.com");
+    
+  }  
+  
+  @Test(expected=IllegalArgumentException.class)
+  public void shouldErrorWithInvalidEmail_noDotCom () {
+    TddAirApplication app = new TddAirApplication();
+    app.registerMember("donmc", "j@j");
     
   }
 
