@@ -19,7 +19,7 @@ public class WhenPurchasingSeatUpgradesWithCC {
   public void shouldPurchaseWithValidCC() {
     SpyCas spy = new SpyCas();
     mom.redGuy.setCas(spy);
-    mom.redGuy.purchaseSeatUpgradesWithCC("111111111", 1);
+    mom.redGuy.purchaseSeatUpgradesWithCC(SpyCas.VALID_CC, 1);
     
     assertEquals(1, mom.redGuy.getSeatUpgradeBalance());
     assertEquals(100, spy.getAmountCharged());

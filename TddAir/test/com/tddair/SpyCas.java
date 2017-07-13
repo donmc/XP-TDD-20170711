@@ -2,9 +2,11 @@ package com.tddair;
 
 public class SpyCas implements Cas {
 
+  public static final String VALID_CC = "11111111111";
+  private int amountCharged;
+  
   public int getAmountCharged() {
-    // TODO Auto-generated method stub
-    return 0;
+    return amountCharged;
   }
   
   /* (non-Javadoc)
