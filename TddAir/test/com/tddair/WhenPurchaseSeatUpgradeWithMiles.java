@@ -3,6 +3,7 @@ package com.tddair;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class WhenPurchaseSeatUpgradeWithMiles {
@@ -13,7 +14,7 @@ public class WhenPurchaseSeatUpgradeWithMiles {
 		String userName="donmc";
 		String emailId = "donmc@hotmail.com";
 		member = new Member(userName,emailId);
-		Flight flight = new Flight("DFW", "ORD", 924, "AA", 10);
+		Flight flight = new Flight("DFW", "ORD", 15000, "AA", 10);
 		member.addFlight(flight);
 	}
 
@@ -27,7 +28,20 @@ public class WhenPurchaseSeatUpgradeWithMiles {
 	@Test
 	public void shouldDecreaseSeatUpgradeEndBalance() {
 		member.upgradeSeats(10000, 1);
-		assertEquals(924, member.getBalance());
+		assertEquals(15000, member.getBalance());
 	}
+	
+	@Test
+	public void shouldIncreaseMultipleQtyEligibleSeatUpgradeBalance() {
+		member.upgradeSeats(20000, 2);
+		assertEquals(2, member.getEligibleSeatUpgradeBalance());
+	}
+	
+	@Test
+	public void shouldDecreaseMultipleQtySeatUpgradeEndBalance() {
+		member.upgradeSeats(20000, 2);
+		assertEquals(5000, member.getBalance());
+	}
+	
 
 }

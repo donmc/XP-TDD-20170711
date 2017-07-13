@@ -79,9 +79,10 @@ public class Member {
 
 
 	public void upgradeSeats(int inputBalanceMiles, int seatQuantity) {
-		if ("RED".equalsIgnoreCase(getStatus()) && inputBalanceMiles >= 10000) {
-			setEligibleSeatUpgradeBalance(1);
-			setBalance(balance-10000);
+		
+		if ("RED".equalsIgnoreCase(getStatus()) && inputBalanceMiles >= 10000*seatQuantity) {
+			setEligibleSeatUpgradeBalance(1*seatQuantity);
+			setBalance(balance-(10000*seatQuantity));
 		}
 	}
 
