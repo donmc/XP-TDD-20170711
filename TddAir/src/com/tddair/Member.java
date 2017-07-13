@@ -7,6 +7,8 @@ public class Member {
   private Status status;
   private int ytdMiles;
   private int balanceMiles;
+  private int seatUpgradeBalance;
+  private Cas cas;
 
   public Member(String username, String email) {
     this.username = username;
@@ -39,9 +41,33 @@ public class Member {
   public void completeFlight(Flight flight) {
     ytdMiles += flight.getMileage();
     balanceMiles += flight.getMileage();
-    
+
     status = Status.calculateStatus(ytdMiles);
 
+  }
+
+  public void purchaseSeatUpgradesWithMiles(int quantity) {
+    int totalCost = status.getMilesCost() * quantity;
+    
+    if (totalCost <= balanceMiles) {
+      seatUpgradeBalance += quantity;
+      balanceMiles -= status.getMilesCost() * quantity;
+    } else  {
+      throw new CantAffordException();
+    }
+  }
+
+  public int getSeatUpgradeBalance() {
+    return seatUpgradeBalance;
+  }
+
+  public void setCas(Cas cas) {
+    this.cas = cas;
+  }
+
+  public void purchaseSeatUpgradesWithCC(String cc, int quantity) {
+    // TODO Auto-generated method stub
+    
   }
 
 }

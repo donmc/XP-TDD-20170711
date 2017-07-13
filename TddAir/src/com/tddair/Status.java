@@ -1,12 +1,14 @@
 package com.tddair;
 
 public enum Status {
-  Gold(75000), Blue(50000), Green(25000), Red(0);
+  Gold(75000, 7000), Blue(50000, 8000), Green(25000, 9000), Red(0, 10000);
   
   private int threshold;
+  private int milesCost;
 
-  private Status(int threshold) {
+  private Status(int threshold, int milesCost) {
     this.threshold = threshold;
+    this.milesCost = milesCost;
   }
 
   public static Status calculateStatus(int ytdMiles) {
@@ -23,5 +25,9 @@ public enum Status {
   
   public int getThreshold() {
     return threshold;
+  }
+
+  public int getMilesCost() {
+    return milesCost;
   }
 }
