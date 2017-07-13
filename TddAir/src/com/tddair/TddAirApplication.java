@@ -34,7 +34,7 @@ public void registerMember(String username, String email) throws Exception {
 		throw new Exception ("Email is not valid");
 	}
 	
-	members.addMember(username, email);
+	members.addMember(username, email, "Red", 10000 );
     	
 }
 
@@ -43,4 +43,23 @@ public Member lookupMember(String username) {
 	return members.getMember(username);
 }
 
+public void completeFlight(String username, String flightNumber) {
+	// TODO Auto-generated method stub
+	Flight flight= flights.getFlightBy(flightNumber);
+	Member member = members.getMember(username);
+	member.miles = member.miles+flight.getMileage();
+	if(member.miles<=25000){
+		member.status = "RED";
+	}else
+		if(member.miles<50000){
+			member.status = "GREEN";
+		}
+		else if(member.miles<100000){
+			member.status = "BLUE";
+		}
+		
+		
+	}
+	
 }
+
