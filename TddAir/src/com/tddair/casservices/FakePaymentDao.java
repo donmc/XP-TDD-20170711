@@ -6,7 +6,11 @@ package com.tddair.casservices;
 public class FakePaymentDao implements PaymentDao{
 
     @Override
-    public boolean chargeCreditCard(int cardNumber, int amount) {
+    public boolean chargeCreditCard(int cardNumber, int seatQuantity, int costPerSeat) {
+        if(cardNumber != 999999999){
+            int totalAmountCharged = seatQuantity * costPerSeat;
+            return true;
+        }
         return false;
     }
 }

@@ -1,5 +1,8 @@
 package com.tddair;
 
+import com.tddair.casservices.FakePaymentDao;
+import com.tddair.casservices.PaymentDao;
+
 /**
  * Created by agrawm2 on 7/12/2017.
  */
@@ -13,6 +16,8 @@ public class Member {
 	private int balance;
 	
 	private int seatUpgradeBalance;
+	private PaymentDao paymentDao;
+
 	
 
 	public Member(String username, String email) {
@@ -86,6 +91,7 @@ public class Member {
 	}
 
 
+
 	public void purchaseAndUpdateBalanceForSeatUpgrade(int noOfSeats) throws InSufficientMilesException{
 		  StatusEnum status = this.getStatus();     
 	        int milesPerUpgrade = status.getMilesPerUpgrade();
@@ -100,7 +106,16 @@ public class Member {
 	}
 
 
-	
-	
-	
+	public void purchaseSeatUpgradeWithCreditCard(int creditCard, int seatQuantity) {
+		StatusEnum status = this.getStatus();
+		int costPerUpgrade = status.getCostPerUpgrade();
+		paymentDao = new FakePaymentDao();
+		if(paymentDao.chargeCreditCard(creditCard,seatQuantity,costPerUpgrade)){
+				this.seatUpgradeBalance+= seatQuantity;
+		}else{
+			throw new InvalidCreditCardException();
+		}
+
+
+	}
 }
