@@ -2,11 +2,19 @@ package com.tddair;
 
 public class TddAirApplication {
 
-  private FlightDao flights = new FlightDao();
-  private MemberDao members = new MemberDao();
+  private FlightDao flights = new FakeFlightDaoImpl();
+  private MemberDao members = new FakeMemberDaoImpl();
 
   public TddAirApplication() {
   }
+
+  
+  
+  public MemberDao getMembers() {
+    return members;
+  }
+
+
 
   /**
    * Adds a flight to the system.
@@ -26,7 +34,7 @@ public class TddAirApplication {
     flights.addFlight(origin, destination, mileage, airline, number);
   }
 
-  public void registerMember(String userName, String email) throws Exception {
+  public void registerMember(String userName, String email) throws RegisterMemberException {
     members.registerMember(userName, email);
 
   }
