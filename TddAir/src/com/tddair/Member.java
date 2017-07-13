@@ -10,6 +10,10 @@ public class Member {
 	private String status;
 	private int miles;
 	private int balance;
+	private int eligibleSeatUpgradeBalance;
+	
+
+
 	private List<Flight> flightList;
 	
 	public Member(String userName,String emailId) {
@@ -74,5 +78,23 @@ public class Member {
 	}
 
 
+	public void upgradeSeats(int inputBalanceMiles, int seatQuantity) {
+		if ("RED".equalsIgnoreCase(getStatus()) && inputBalanceMiles >= 10000) {
+			setEligibleSeatUpgradeBalance(1);
+			setBalance(balance-10000);
+		}
+	}
+
+
+
+
+	public int getEligibleSeatUpgradeBalance() {
+		return eligibleSeatUpgradeBalance;
+	}
+
+
+	public void setEligibleSeatUpgradeBalance(int eligibleSeatUpgradeBalance) {
+		this.eligibleSeatUpgradeBalance = eligibleSeatUpgradeBalance;
+	}
 
 }
