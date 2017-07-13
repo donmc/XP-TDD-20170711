@@ -15,14 +15,14 @@ public class Flight {
    * @param destination the three letter airline code for destination airport
    * @param mileage the miles between origin and destination
    * @param airline the two letter airline code
-   * @param number the numbered flight number
+   * @param number the numbered flight number 
    */
   public Flight(String origin, String destination, int mileage, String airline, int number) {
     if (origin == null || origin.length() != 3) {
       throw new IllegalArgumentException("Invalid origin code");
     }
     if (destination == null || destination.length() != 3) {
-      throw new IllegalArgumentException("Invalid destination code");
+      throw new IllegalArgumentException("Invalid destination code"); 
     }
     if (mileage < 100) {
       throw new IllegalArgumentException("Mileage must be greater than 100");
