@@ -12,6 +12,8 @@ public class Member {
 	private int ytdMiles;
 	private int balance;
 	
+	private int seatUpgradeBalance;
+	
 
 	public Member(String username, String email) {
 		this.username = username;
@@ -68,6 +70,32 @@ public class Member {
 
 	public void accumulateMiles( int ytdMiles, int flightMileage) {
 		this.setYtdMiles(ytdMiles + flightMileage);
+		
+	}
+
+	
+	
+
+	public int getSeatUpgradeBalance() {
+		return seatUpgradeBalance;
+	}
+
+
+	public void setSeatUpgradeBalance(int seatUpgradeBalance) {
+		this.seatUpgradeBalance = seatUpgradeBalance;
+	}
+
+
+	public void purchaseAndUpdateBalanceForSeatUpgrade(int noOfSeats) throws InSufficientMilesException{
+		  StatusEnum status = this.getStatus();     
+	        int milesPerUpgrade = status.getMilesPerUpgrade();
+	        int totalMilesForUpgrade = noOfSeats * milesPerUpgrade;
+	        if(this.balance < totalMilesForUpgrade){
+	        	throw new InSufficientMilesException("No enough balance miles for the purchase!");
+	        }
+	        
+	        this.balance-= totalMilesForUpgrade;
+	        this.seatUpgradeBalance+= noOfSeats;
 		
 	}
 

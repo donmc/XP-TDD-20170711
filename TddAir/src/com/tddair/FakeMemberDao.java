@@ -34,6 +34,7 @@ public class FakeMemberDao implements MemberDao {
                 member.setRegistered(true);
                 member.setYtdMiles(0);
                 member.setBalance(10000);
+                member.setSeatUpgradeBalance(0);
                 return true;
             } else {
                 throw new InvalidEmailException("Email Id Invalid");

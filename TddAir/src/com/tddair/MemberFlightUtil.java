@@ -1,12 +1,17 @@
 package com.tddair;
 
+import com.tddair.casservices.FakePaymentDao;
+import com.tddair.casservices.PaymentDao;
+
 public class MemberFlightUtil {
     private final MemberDao memberDao;
     private final FlightDao flightDao;
+    private final PaymentDao paymentDao;
 
     public MemberFlightUtil(MemberDao memberDao, FlightDao flightDao) {
         this.memberDao = memberDao;
         this.flightDao = flightDao;
+        this.paymentDao = new FakePaymentDao();
     }
 
     public MemberDao getMemberDao() {
@@ -35,7 +40,8 @@ public class MemberFlightUtil {
     }
 
     public boolean purchaseSeatUpgradeWithMiles(String username, int quantity){
-        Member member = memberDao.getMember(username);
+        Member member = memberDao.getMember(username);             
+        member.purchaseAndUpdateBalanceForSeatUpgrade(quantity);
         return false;
 
     }
