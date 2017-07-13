@@ -11,14 +11,6 @@ import com.tddair.MemberDao;
 import com.tddair.MemberFlightUtil;
 
 import com.tddair.TddAirApplication;
-
-
-
-
-
-
-
-
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -50,15 +42,25 @@ public class WhenPurchasingSeatUpgradeWithMiles {
     }
     
     @Test(expected=InSufficientMilesException.class)
-    public void shouldThrowErrorForInSufficientBalance() throws DuplicateMemberException, InvalidEmailException {
-    	
+    public void shouldThrowErrorForInSufficientBalance() throws DuplicateMemberException, InvalidEmailException {    	
 			Member redMember = memMother.createRedMember();
 			
 			redMember.purchaseAndUpdateBalanceForSeatUpgrade(2);
-    	
+    }
+    
+    
+    @Test
+    public void shouldAllowMultiplePurchase() {
+    	try {
+			Member goldMember = memMother.createGoldMember();			
+			goldMember.purchaseAndUpdateBalanceForSeatUpgrade(3);
 			
-			
+			assertEquals(3, goldMember.getSeatUpgradeBalance());
+			assertEquals(56000, goldMember.getBalance());
 		
+		} catch (DuplicateMemberException | InvalidEmailException e) {			
+			e.printStackTrace();
+		}
     }
     
  
