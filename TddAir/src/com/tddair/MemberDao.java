@@ -1,65 +1,15 @@
 package com.tddair;
 
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
-import java.util.HashMap;
-import java.util.Map;
+public interface MemberDao {
 
-public class MemberDao {
+	/**
+	 * @param username
+	 * @param email
+	 * @return
+	 */
+	public abstract boolean registerMember(String username, String email)
+			throws DuplicateMemberException, InvalidEmailException;
 
-    private Map<String, Member> members = new HashMap<>();
+	public abstract Member getMember(String username);
 
-    protected MemberDao() {
-        try {
-            registerMember("john", "john@email.com");
-        } catch (DuplicateMemberException e) {
-            e.printStackTrace();
-        } catch (InvalidEmailException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * @param username
-     * @param email
-     * @return
-     */
-    protected boolean registerMember(String username, String email) throws DuplicateMemberException, InvalidEmailException {
-
-        if (getMember(username) == null) {
-
-            if (validEmail(email)) {
-                Member member = new Member(username, email);
-                members.put(member.getUsername(), member);
-                member.setStatus(StatusEnum.Red);
-                member.setRegistered(true);
-                member.setYtdMiles(0);
-                member.setBalance(10000);
-                return true;
-            } else {
-                throw new InvalidEmailException("Email Id Invalid");
-            }
-        } else {
-            throw new DuplicateMemberException("Duplicate Member");
-        }
-
-
-    }
-
-    private boolean validEmail(String email) {
-
-        boolean result = true;
-        try {
-            InternetAddress emailAddr = new InternetAddress(email);
-            emailAddr.validate();
-        } catch (AddressException ex) {
-            result = false;
-        }
-        return result;
-
-    }
-
-    public Member getMember(String username) {
-        return members.get(username);
-    }
 }
