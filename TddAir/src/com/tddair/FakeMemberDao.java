@@ -9,7 +9,7 @@ public class FakeMemberDao implements MemberDao {
 
     private Map<String, Member> members = new HashMap<>();
 
-    protected FakeMemberDao() {
+    public FakeMemberDao() {
         try {
             registerMember("john", "john@email.com");
         } catch (DuplicateMemberException e) {

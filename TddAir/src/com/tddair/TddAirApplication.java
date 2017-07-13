@@ -2,8 +2,11 @@ package com.tddair;
 
 public class TddAirApplication {
 
+
     private FlightDao flights = new FakeFlightDao();
     private MemberDao members = new FakeMemberDao();
+
+    private final MemberFlightUtil memberFlightUtil = new MemberFlightUtil(members,flights);
 
     public TddAirApplication() {
     }
@@ -37,16 +40,9 @@ public class TddAirApplication {
      * @return
      */
 	public Member memberCompleteFlight(String username, String flightNumber) {
-		Member member = members.getMember(username);
-		Flight flight = flights.getFlightBy(flightNumber);
-		
-		member.accumulateMiles(member.getYtdMiles(), flight.getMileage());
-		member.updateBalanceWithFlightMiles(member.getBalance(), flight.getMileage());
-		
-		member.updateStatusBasedonYtdMiles(member.getYtdMiles());
-		return member;
-		
-	}
+
+        return memberFlightUtil.memberCompleteFlight(username, flightNumber);
+    }
 
 	
 

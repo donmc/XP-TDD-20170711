@@ -70,7 +70,8 @@ public class Member {
 		this.setYtdMiles(ytdMiles + flightMileage);
 		
 	}
-	
+
+
 	
 	
 	
