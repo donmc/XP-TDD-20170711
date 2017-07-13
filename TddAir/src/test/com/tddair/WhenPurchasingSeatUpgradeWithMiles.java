@@ -51,13 +51,11 @@ public class WhenPurchasingSeatUpgradeWithMiles {
     
     @Test(expected=InSufficientMilesException.class)
     public void shouldThrowErrorForInSufficientBalance() throws DuplicateMemberException, InvalidEmailException {
-    	try{
+    	
 			Member redMember = memMother.createRedMember();
 			
 			redMember.purchaseAndUpdateBalanceForSeatUpgrade(2);
-    	}catch(Exception ex){
-    		ex.printStackTrace();
-    	}
+    	
 			
 			
 		

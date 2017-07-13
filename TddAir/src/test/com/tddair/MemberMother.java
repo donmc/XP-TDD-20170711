@@ -23,28 +23,28 @@ public class MemberMother {
     }
 
     public Member createRedMember()  throws DuplicateMemberException, InvalidEmailException {
-      flightDao.addFlight("DFW", "MAA", 24000, "AA", 242);
+      flightDao.addFlight("DFW", "MAA", 4500, "AA", 242);
       memberDao.registerMember("manish","test@gmail.com");
       return memberFlightUtil.memberCompleteFlight("manish","AA242");
 
     }
 
     public Member createGreenMember() throws DuplicateMemberException, InvalidEmailException {
-        flightDao.addFlight("DFW", "MAA", 45000, "AA", 243);
+        flightDao.addFlight("DFW", "MAA", 35000, "AA", 243);
         memberDao.registerMember("manish","test@gmail.com");
         return memberFlightUtil.memberCompleteFlight("manish","AA243");
 
     }
 
     public Member createBlueMember() throws DuplicateMemberException, InvalidEmailException {
-        flightDao.addFlight("DFW", "MAA", 70000, "AA", 244);
+        flightDao.addFlight("DFW", "MAA", 60000, "AA", 244);
         memberDao.registerMember("manish","test@gmail.com");
         return memberFlightUtil.memberCompleteFlight("manish","AA244");
 
     }
 
     public Member createGoldMember() throws DuplicateMemberException, InvalidEmailException {
-        flightDao.addFlight("DFW", "MAA", 80000, "AA", 245);
+        flightDao.addFlight("DFW", "MAA", 70000, "AA", 245);
         memberDao.registerMember("manish","test@gmail.com");
         return memberFlightUtil.memberCompleteFlight("manish","AA245");
 
