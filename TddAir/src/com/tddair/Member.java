@@ -8,6 +8,8 @@ public class Member {
 	private Status status;
 	private long ytdMiles;
 	private long balance;
+	private boolean seatUpgraded;
+	private int seatupgradeQuantity;
 	
 	public Member(String userName, String email) {
 		this.username = userName;
@@ -53,15 +55,35 @@ public class Member {
 	public void setBalance(long balance) {
 		this.balance = balance;
 	}
+
+	public boolean isSeatUpgraded() {
+		return seatUpgraded;
+	}
+	
+	public void setSeatUpgraded(boolean seatUpgrade) {
+		this.seatUpgraded = seatUpgrade;
+	}
+	
+	
+	public int getSeatupgradeQuantity() {
+		return seatupgradeQuantity;
+	}
+	public void setSeatupgradeQuantity(int seatupgradeQuantity) {
+		this.seatupgradeQuantity = seatupgradeQuantity;
+	}
+
 	public void completeFlight(Flight flight) {
 		ytdMiles +=flight.getMileage();
 		balance +=flight.getMileage();
 		
-		status = Status.calculateMiles(ytdMiles);
-			
+		status = Status.calculateMiles(ytdMiles);		
 		
 	}
 	
-	
+	public void upgradeSeat(int quantity) {
+		seatUpgraded = true;		
+		seatupgradeQuantity = quantity;
+		balance -= 10000*quantity;
+	}
 	
 }

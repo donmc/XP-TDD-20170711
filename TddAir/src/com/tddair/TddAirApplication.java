@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class TddAirApplication {
 
-  private FlightDao flights = new FlightDao();
+  private FlightDao flights = new FakeFlightDao();
   private Map<String,Member> members = new HashMap<String,Member>();
 
   public TddAirApplication() {
@@ -77,5 +77,11 @@ public class TddAirApplication {
 		Member member = members.get(userName);
 		
 		member.completeFlight(flight);
+	}
+
+	public void seatUpgrade(Member member) {		
+		Member newMember = members.get(member.getUsername());
+		
+		newMember.upgradeSeat(member.getSeatupgradeQuantity());
 	}
 }
