@@ -25,10 +25,14 @@ public class WhenPurchasingSeatUpgradesWithCC {
     assertEquals(100, spy.getAmountCharged());
   }
 
-  @Ignore
   @Test
   public void shouldNotPurchaseWithInvalidCC() {
-
+    SpyCas spy = new SpyCas();
+    mom.redGuy.setCas(spy);
+    boolean valid = mom.redGuy.purchaseSeatUpgradesWithCC(SpyCas.INVALID_CC, 1);
+ 
+    assertFalse(valid);
+    assertEquals(0, mom.redGuy.getSeatUpgradeBalance());
   }
 
   @Ignore

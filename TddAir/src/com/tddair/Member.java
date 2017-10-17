@@ -48,11 +48,11 @@ public class Member {
 
   public void purchaseSeatUpgradesWithMiles(int quantity) {
     int totalCost = status.getMilesCost() * quantity;
-    
+
     if (totalCost <= balanceMiles) {
       seatUpgradeBalance += quantity;
       balanceMiles -= status.getMilesCost() * quantity;
-    } else  {
+    } else {
       throw new CantAffordException();
     }
   }
@@ -65,9 +65,17 @@ public class Member {
     this.cas = cas;
   }
 
-  public void purchaseSeatUpgradesWithCC(String cc, int quantity) {
-    // TODO Auto-generated method stub
-    
+  public boolean purchaseSeatUpgradesWithCC(String cc, int quantity) {
+
+    int amount = status.getDollarCost() * quantity;
+
+    boolean valid = cas.charge(amount, cc);
+    if (valid) {
+      seatUpgradeBalance += quantity;
+    }
+
+    return valid;
+
   }
 
 }
